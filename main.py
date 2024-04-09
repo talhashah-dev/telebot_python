@@ -13,7 +13,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("من یه چت باتم، لطفا متنی تایپ کنید تا به آن پاسخ دهم!")
     
-async def custom_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def custome_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("این یک کماند سفارشی هست.")
     
     
@@ -60,21 +60,21 @@ async def error(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     
 if __name__ == "__main__":
-    print("Starting Bot...")
+    print("Starting...")
     app = Application.builder().token(TOKEN).build()
     
     # Commands
     app.add_handler(CommandHandler("start", start_command))
     app.add_handler(CommandHandler("help", help_command))
-    app.add_handler(CommandHandler("custom", custom_command))
+    app.add_handler(CommandHandler("custome", custome_command))
     
     # Message
-    app.add_handler(MessageHandler(filters.TEXT, handle_message))
+    app.add_handler(MessageHandler(filters.Text, handle_message))
     
     # Errors
     app.add_error_handler(error)
     
-    # Polls the bot
+    # Polling
     print("Polling...")
-    app.run_polling(poll_interval=5)
+    app.run_polling(poll_interval=3)
     
